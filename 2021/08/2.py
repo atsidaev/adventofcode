@@ -33,39 +33,13 @@ for l1 in range(7):
                 for l5 in range(3):
                     for l6 in range(2):
                         ordered_letters = []
-                        iletters = letters
+                        iletters = set(letters)
 
-                        letter = list(letters)[l1]
-                        ordered_letters.append(letter)
-                        letters = letters -  { letter }
+                        for letternum in [ l1, l2, l3, l4, l5, l6, 0 ]:
+                            letter = list(iletters)[letternum]
+                            ordered_letters.append(letter)
+                            iletters = iletters -  { letter }
 
-                        letter = list(letters)[l2]
-                        ordered_letters.append(letter)
-                        letters = letters -  { letter }
-
-                        letter = list(letters)[l3]
-                        ordered_letters.append(letter)
-                        letters = letters -  { letter }
-
-                        letter = list(letters)[l4]
-                        ordered_letters.append(letter)
-                        letters = letters -  { letter }
-
-                        letter = list(letters)[l5]
-                        ordered_letters.append(letter)
-                        letters = letters -  { letter }
-
-                        letter = list(letters)[l6]
-                        ordered_letters.append(letter)
-                        letters = letters -  { letter }
-
-                        letter = list(letters)[0]
-                        ordered_letters.append(letter)
-                        letters = letters -  { letter }
-
-                        letters = iletters
-                        num += 1
-                        
                         dic = {}
                         for l in range(len(ordered_letters)):
                             dic[chr(ord('a')+l)] = ordered_letters[l]
@@ -83,9 +57,6 @@ for l1 in range(7):
                                 
                                 if not set(newp) in digits:
                                     need_exit = True
-                                    break
-
-                                if need_exit:
                                     break
 
                             if not need_exit:
