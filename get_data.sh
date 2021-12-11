@@ -9,3 +9,4 @@ PTH=`echo $PWD | sed s'/.*\([0-9]\{4\}\)\/0*\([0-9]\{1,2\}\).*/\1\/day\/\2/'`
 URL=https://adventofcode.com/$PTH/input
 
 curl $URL -H "Cookie: $COOKIE" > data.txt
+touch test.txt
