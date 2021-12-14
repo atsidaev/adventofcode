@@ -3,6 +3,7 @@ fname = "data.txt"
 
 import os, sys
 import pyperclip
+from collections import Counter
 
 result = 0
 
