@@ -4,6 +4,7 @@ fname = "data.txt"
 import os, sys
 import pyperclip
 from collections import Counter
+import heapq
 
 result = 0
 
@@ -30,15 +31,14 @@ dst = [ [ M for i in l ] for l in mmap ]
 p = (0, (0, 0))
 verts = [p]
 while verts:
-    d, (x,y) = verts.pop(0)
+    d, (x,y) = heapq.heappop(verts)
     for nx,ny in [ (x-1, y), (x+1, y), (x, y-1), (x, y+1) ]:
         if nx >= 0 and nx < len(mmap[0]) and ny >= 0 and ny < len(mmap):
             nd = d + mmap[ny][nx]
 #            print(nx, ny, nd, dst[ny][nx])
             if nd < dst[ny][nx]:
                 dst[ny][nx] = nd
-                verts.append((nd, (nx,ny)))
-    verts.sort()
+                heapq.heappush(verts, (nd, (nx,ny)))
 #    print(verts)
 #    print(dst)
 
