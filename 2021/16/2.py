@@ -23,9 +23,9 @@ rrr = 0
 def parse_packets(st, count = 10000000000000000):
     values = []
     global versum
-    print("Packet: ", st)
+#    print("Packet: ", st)
     pos = 0
-    print("Total bits: ", len(st))
+#    print("Total bits: ", len(st))
     cnt = 0
     while pos + 7 < len(st) and cnt < count:
         cnt += 1
@@ -34,30 +34,31 @@ def parse_packets(st, count = 10000000000000000):
         pos += 3
         typ = int(st[pos:pos+3], 2)
         pos += 3
-        print("Version", ver, "Type", typ)
+#        print("Version", ver, "Type", typ)
         length = 6
         if typ == 4:
-            print("Literal")
+#            print("Literal")
             res = 0
             while True:
                 pref = st[pos]
                 pos += 1
                 length += 1
                 val = st[pos:pos+4]
-                print("p", pref, val)
+#                print("p", pref, val)
                 pos += 4
                 length += 4
                 res *= 16
                 res += int(val, 2)
                 if pref == "0":
-                    print("literal", res)
+#                    print("literal", res)
+                    print(f"{res} ", end = '')
                     values.append(res)
                     break
         else:
-            print("Operator")
+#            print("Operator ", typ)
             lenid = int(st[pos], 2)
             pos += 1
-            print("length id", lenid)
+#            print("length id", lenid)
             if lenid == 0:
                 sublen = int(st[pos:pos+15], 2)
                 pos += 15
@@ -67,12 +68,12 @@ def parse_packets(st, count = 10000000000000000):
             else:
                 pacnum = int(st[pos:pos+11], 2)
                 pos += 11
-                print(pacnum, "packets of N bits")
+#                print(pacnum, "packets of N bits")
                 myvals = []
                 for k in range(pacnum):
                     subp = st[pos:]
                     (pos_diff, v) = parse_packets(subp, 1)
-                    print("Parsed", cnt, "bytes")
+#                    print("Parsed", cnt, "bytes")
                     pos += pos_diff
                     myvals += v
 
@@ -105,5 +106,6 @@ def parse_packets(st, count = 10000000000000000):
 
 _, vvv = parse_packets(st)
 result = vvv[0]
+print()
 print(result, vvv)
 pyperclip.copy(result)
