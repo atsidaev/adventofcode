@@ -1,4 +1,4 @@
-fname = "1.txt"
+fname = "data.txt"
 #fname = "test.txt"
 
 import os, sys

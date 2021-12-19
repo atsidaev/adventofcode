@@ -14,21 +14,22 @@ for i in range(len(lines)):
 		lines[i][1][k] = lines[i][1][k].strip()
 		if lines[i][1][k] == "no other bags.":
 			continue
-		m = re.match("(\d+) (.*) bags?", lines[i][1][k])
+		m = re.match("\d+ (.*) bags?", lines[i][1][k])
 		if not m:
 			raise Exception(lines[i][1][k])
-		lines[i][1][k] = (int(m.groups(1)[0]), m.groups(1)[1])
+		lines[i][1][k] = m.groups(1)[0]
 
 result = {}
 
 def process(bag, lines):
-	result = 1
-	wh = list(filter(lambda x: x[0] == bag, lines))
-	print(wh[0])
-	if "no other bags." in wh[0][1]:
-		return result
-	for (n,w) in wh[0][1]:
-		result += n * process(w, lines)
-	return result
-	
-print(process("shiny gold", lines) - 1)
+	wh = list(filter(lambda x: bag in x[1], lines))
+	print(wh)
+	for w in wh:
+		print(w)
+		if not str(w) in result.keys():
+			result[w[0]] = 1
+			process(w[0], lines)
+
+process("shiny gold", lines)
+print(len(result))
+

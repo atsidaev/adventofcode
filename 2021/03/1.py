@@ -24,4 +24,6 @@ print(length, a)
 
 v = "".join([ "1" if c >= length/2 else "0" for c in a ])
 e = "".join([ "0" if c >= length/2 else "1" for c in a ])
-print("result", v, e, int(v,2) * int(e,2))
+result = int(v,2) * int(e,2)
+print("result", v, e, result)
+print(result)

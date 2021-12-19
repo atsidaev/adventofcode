@@ -3,6 +3,7 @@ fname = "data.txt"
 
 import os, sys
 import pyperclip
+from collections import Counter
 
 result = 0
 
@@ -15,9 +16,7 @@ for l in data:
     p1, p2 = l.split(" -> ")
     conns.append( ([int(x) for x in p1.split(',')], [int(x) for x in p2.split(',')]) )
 
-conns = list(filter(lambda x: x[0][0] == x[1][0] or x[0][1] == x[1][1], conns))
-
-count = {}
+count = Counter()
 
 for p1,p2 in conns:
     if p1[0] == p2[0]:
@@ -25,11 +24,6 @@ for p1,p2 in conns:
         y2 = max(p1[1], p2[1])
         for y in range(y1, y2 + 1):
             p = (p1[0],y)
-  #          print(p1, p2, p)
-            if not p in count:
-                count[p] = 0
-#            else:
- #               print(p, count[p])
             count[p] += 1
 
     elif p1[1] == p2[1]:
@@ -37,12 +31,18 @@ for p1,p2 in conns:
         x2 = max(p1[0], p2[0])
         for x in range(x1, x2 + 1):
             p = (x, p1[1])
- #           print(p1, p2, p)
-            if not p in count:
-                count[p] = 0
             count[p] += 1
+    elif abs(p1[0] - p2[0]) == abs(p1[1] - p2[1]):
+        stepx = 1 if p2[0] > p1[0] else -1
+        stepy = 1 if p2[1] > p1[1] else -1
+        steps = abs(p2[0] - p1[0])
+        p = (p1[0], p1[1])
+        for i in range(0, steps + 1):
+            count[p] += 1
+            cx, cy = p
+            p = (cx + stepx, cy + stepy)
 
-print(count)
+#print(count)
 
 result = 0
 for p in count:
