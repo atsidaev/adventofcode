@@ -26,5 +26,5 @@ for n in range(256):
     counts[6] += today
 
 print(counts, sum(counts))
-
+result = sum(counts)
 print(result)

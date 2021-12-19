@@ -107,5 +107,6 @@ def parse_packets(st, count = 10000000000000000):
 _, vvv = parse_packets(st)
 result = vvv[0]
 print()
-print(result, vvv)
+print(vvv)
+print(result)
 pyperclip.copy(result)

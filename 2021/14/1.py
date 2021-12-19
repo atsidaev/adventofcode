@@ -9,14 +9,11 @@ result = 0
 with open(fname) as f:
     data = list(map(lambda x: x.strip(), f.readlines()))
 
-
 template = data[0]
 
 preobr = [ m.split(" -> ") for m in data[2:] ]
 
-
-
-for steps in range(40):
+for steps in range(10):
     new_temp = ""
     for i in range(len(template) - 1):
         pair = template[i:i+2]
@@ -25,7 +22,7 @@ for steps in range(40):
             if pair == l:
                 new_temp += pair[0] + r
     new_temp += template[-1]
-    print(new_temp)
+#    print(new_temp)
     template = new_temp
 
 a = dict([])

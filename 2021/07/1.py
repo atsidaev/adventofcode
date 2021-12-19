@@ -21,5 +21,6 @@ for pos in range(max(data)):
 
 diffs = [ abs(x - min_pos) for x in data ]
 
-print(min_pos, min)
+print(min_pos)
+print(min)
 pyperclip.copy(result)

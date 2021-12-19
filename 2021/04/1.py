@@ -37,7 +37,8 @@ for num_cnt in range(len(numbers)):
                         if not n in cur_numbers:
                             print(n)
                             sum1 += n
-                print(c, cur_numbers, sum1, cur_numbers[-1] * sum1)
+                print(c, cur_numbers, sum1)
+                print(cur_numbers[-1] * sum1)
                 exit(0)
 
 print(result)

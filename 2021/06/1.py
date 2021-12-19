@@ -15,7 +15,7 @@ fishes = [ int(x) for x in fishes ]
 
 result = len(fishes)
 
-for n in range(256):
+for n in range(80):
     #print(fishes)
     fishes = [ x - 1 for x in fishes]
     new = len(list(filter(lambda x: x == -1, fishes)))

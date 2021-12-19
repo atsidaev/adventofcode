@@ -60,6 +60,7 @@ for line in data:
         pts_all.append(pts)
 
 pts_all = sorted(pts_all)
-print(pts_all, pts_all[int(len(pts_all) / 2)])
-print(result1, result2)
+print(pts_all)
+result2 = pts_all[int(len(pts_all) / 2)]
+print(result2)
 pyperclip.copy(result2)

@@ -58,5 +58,6 @@ for vx in range(0, 200):
                 break
 
 result = mayyy
-print(result, cnt)
+print(result)
+print(cnt)
 pyperclip.copy(result)

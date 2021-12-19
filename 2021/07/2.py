@@ -11,7 +11,7 @@ with open(fname) as f:
 
 def fuel(p1, p2):
     diff = abs(p1 - p2)
-    return diff * (1 + diff) / 2
+    return diff * (1 + diff) // 2
 
 min = 100000000000
 min_pos = -1
@@ -25,5 +25,6 @@ for pos in range(max(data)):
         min_pos = pos
 
 result = min
-print(min_pos, result)
+print(min_pos)
+print(result)
 pyperclip.copy(result)
