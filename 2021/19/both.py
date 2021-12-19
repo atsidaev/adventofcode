@@ -95,11 +95,6 @@ while len(aligned_scanners) < len(scanners):
             coords.append(shift)
 
             for p in aligned:
-                if p[0] == -739:
-                    print("Wrong")
-                    print(s)
-                    print(aligned)
-                    print("End wrong")
                 map[(p[0], p[1], p[2])] += 1
 
 result = len(map)
