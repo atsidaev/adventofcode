@@ -72,9 +72,9 @@ for year in os.listdir("."):
                 print(prefix, "Both tasks", end='\r')
                 res1, res2 = test(SOLUTIONS_BOTH_FILENAME, "both", year, True)
             else:
-                print(prefix, "Task 1", end='\r')
+                print(prefix, "Task 1    ", end='\r')
                 res1 = test(SOLUTION1_FILENAME, 0, year)
-                print(prefix, "Task 2", end='\r')
+                print(prefix, "Task 2    ", end='\r')
                 res2 = test(SOLUTION2_FILENAME, 1, year)
 
             pos = day * 2
