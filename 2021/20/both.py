@@ -26,7 +26,7 @@ def calc(pic, n):
         maxy = max([ y for x,y in pic.keys() ])
 
         pic2 = dict()
-        out = "0" if k%2 == 0 else "1"
+        out = "0" if enc[0] == '.' or k%2 == 0 else "1"
         for y in range(miny-1, maxy+2):
             for x in range(minx-1, maxx+2):
                 #print("#" if (x,y) in pic.keys() and pic[(x,y)] == True else ".", end='')
