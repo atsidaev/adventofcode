@@ -33,6 +33,10 @@ def roll(pp1, pp2, sscore1, sscore2):
                         p1 -= 10
                     score1 += p1
 
+                    if score1 >= 21:
+                        total = (total[0] + 1, total[1])
+                        continue
+
                     for dice4 in [ 1, 2, 3 ]:
                         for dice5 in [ 1, 2, 3 ]:
                             for dice6 in [ 1, 2, 3 ]:
