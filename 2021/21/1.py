@@ -7,8 +7,6 @@ from collections import Counter
 
 result = 0
 
-with open(fname) as f:
-    data = list(map(lambda x: x.strip(), f.readlines()))
 
 dice = 0
 cnt = 0
